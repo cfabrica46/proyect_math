@@ -8,6 +8,8 @@ import (
 
 func main() {
 
+	fmt.Println("Bienvenido")
+
 	fmt.Println(mate.Suma(1, 2))
 
 }
