@@ -1,9 +1,13 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+
+	"github.com/Cesar/prueba_1/Matematicas/mate"
+)
 
 func main() {
 
-	fmt.Println("Bienvenido")
+	fmt.Println(mate.Suma(1, 2))
 
 }
