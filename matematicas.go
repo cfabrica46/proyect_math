@@ -6,16 +6,33 @@ import (
 	"github.com/Cesar/prueba_1/Matematicas/mate"
 )
 
+type operacion struct {
+	nombre string
+	acceso bool
+}
+
 func main() {
 
 	var numerooperaciones, eleccionoperaciones int
 
-	vector1 := []string{"suma", "0"}
-	vector2 := []string{"resta", "0"}
-	vector3 := []string{"multiplicación", "0"}
-	vector4 := []string{"división", "0"}
-
-	operaciones := [][]string{vector1, vector2, vector3, vector4}
+	operaciones := []operacion{
+		operacion{
+			nombre: "suma",
+			acceso: false,
+		},
+		operacion{
+			nombre: "resta",
+			acceso: false,
+		},
+		operacion{
+			nombre: "multiplicación",
+			acceso: false,
+		},
+		operacion{
+			nombre: "división",
+			acceso: false,
+		},
+	}
 
 	//Introducción...
 	fmt.Println("Bienvenido")
