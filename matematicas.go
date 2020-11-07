@@ -68,19 +68,15 @@ func main() {
 
 			operaciones[eleccionoperaciones-1].acceso = true
 
-			elecciones = append(elecciones, eleccionoperaciones)
+			if revisar(elecciones, eleccionoperaciones) == true {
 
-			if len(elecciones) != 1 {
+				fmt.Println("Esa opción ya fue seleccionada")
 
-				if revisar(elecciones) == true {
+			} else {
 
-					elecciones = append(elecciones[:len(elecciones)-1])
-
-				}
+				elecciones = append(elecciones, eleccionoperaciones)
 
 			}
-
-			fmt.Println(elecciones)
 
 			if len(elecciones) == len(operaciones) {
 				break
@@ -92,18 +88,24 @@ func main() {
 
 	}
 
-	fmt.Println(operaciones)
+	fmt.Println("Seleccionaste:")
+
+	for i, v := range elecciones {
+
+		fmt.Printf("%d.%s\t", i+1, operaciones[v-1].nombre)
+
+	}
 
 	fmt.Println(mate.Suma(1, 2))
 }
 
-func revisar(vector []int) (aviso bool) {
+func revisar(v []int, n int) (aviso bool) {
 
-	for i := 0; i < len(vector)-1; i++ {
+	for i := 0; i < len(v); i++ {
 
-		for i := 0; i < len(vector)-1; i++ {
+		for i := 0; i < len(v); i++ {
 
-			if vector[i] == vector[i+1] {
+			if v[i] == n {
 
 				aviso = true
 
