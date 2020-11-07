@@ -2,6 +2,8 @@ package main
 
 import (
 	"fmt"
+	"math/rand"
+	"time"
 
 	"github.com/Cesar/prueba_1/Matematicas/mate"
 )
@@ -95,8 +97,21 @@ func main() {
 		fmt.Printf("%d.%s\t", i+1, operaciones[v-1].nombre)
 
 	}
+	fmt.Println("")
+	//Cuerpo del codigo...
+
+	rand.Seed(time.Now().UnixNano())
+
+	for i := 0; i < numerooperaciones; i++ {
+
+		a := rand.Intn(len(elecciones))
+
+		fmt.Println(a)
+
+	}
 
 	fmt.Println(mate.Suma(1, 2))
+
 }
 
 func revisar(v []int, n int) (aviso bool) {
