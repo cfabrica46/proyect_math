@@ -10,14 +10,12 @@ func main() {
 
 	var numerooperaciones int
 
-	operaciones := make(map[string]int, 4)
-	operaciones["suma"] = 0
-	operaciones["resta"] = 0
-	operaciones["multiplicación"] = 0
-	operaciones["división"] = 0
+	vector1 := []string{"suma", "0"}
+	vector2 := []string{"resta", "0"}
+	vector3 := []string{"multiplicación", "0"}
+	vector4 := []string{"división", "0"}
 
-	fmt.Println(operaciones)
-	return
+	operaciones := [][]string{vector1, vector2, vector3, vector4}
 
 	//Introducción...
 	fmt.Println("Bienvenido")
@@ -36,8 +34,9 @@ func main() {
 	fmt.Println("¿Que ejercicios deseas realizar?")
 
 	for i := 0; i < len(operaciones); i++ {
-		fmt.Printf("%d.%s")
+		fmt.Printf("%d.%s\t", i+1, operaciones[i][0])
 	}
+	fmt.Println("")
 
 	fmt.Println(mate.Suma(1, 2))
 }
