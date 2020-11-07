@@ -34,7 +34,7 @@ func main() {
 		},
 	}
 
-	elecciones := []bool{}
+	elecciones := []int{}
 
 	//Introducción...
 	fmt.Println("Bienvenido")
@@ -68,7 +68,17 @@ func main() {
 
 			operaciones[eleccionoperaciones-1].acceso = true
 
-			elecciones = append(elecciones, operaciones[eleccionoperaciones-1].acceso)
+			elecciones = append(elecciones, eleccionoperaciones)
+
+			if len(elecciones) != 1 {
+
+				if revisar(elecciones) == true {
+
+					elecciones = append(elecciones[:len(elecciones)-1])
+
+				}
+
+			}
 
 			fmt.Println(elecciones)
 
@@ -85,4 +95,25 @@ func main() {
 	fmt.Println(operaciones)
 
 	fmt.Println(mate.Suma(1, 2))
+}
+
+func revisar(vector []int) (aviso bool) {
+
+	for i := 0; i < len(vector)-1; i++ {
+
+		for i := 0; i < len(vector)-1; i++ {
+
+			if vector[i] == vector[i+1] {
+
+				aviso = true
+
+				return
+			}
+
+		}
+
+	}
+
+	return
+
 }
