@@ -1,7 +1,7 @@
 package mate
 
 //Suma es exportado...
-func Suma(i1, i2 int) (r int) {
+func Sumar(i1, i2 int) (r int) {
 
 	r = i1 + i2
 
@@ -9,7 +9,7 @@ func Suma(i1, i2 int) (r int) {
 }
 
 //Resta es exportado...
-func Resta(i1, i2 int) (r int) {
+func Restar(i1, i2 int) (r int) {
 
 	r = i1 - i2
 
