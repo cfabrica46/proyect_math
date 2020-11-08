@@ -19,7 +19,7 @@ type operacion struct {
 
 func main() {
 
-	var numerooperaciones, eleccionoperaciones, scifras, rcifras, m1cifras, m2cifras, d1cifras, d2cifras int
+	var numerooperaciones, eleccionoperaciones, scifras, rcifras, m1cifras, m2cifras, d1cifras, d2cifras, respuesta, puntosbuenos, puntosmalos int
 
 	operaciones := []operacion{
 		operacion{
@@ -114,6 +114,7 @@ func main() {
 					fmt.Scan(&d2cifras)
 				}
 
+				fmt.Println("¿Desea agregar otra operacion?")
 			}
 
 			if len(elecciones) == len(operaciones) {
@@ -154,11 +155,11 @@ func main() {
 
 		ejercicios = append(ejercicios, a)
 
-		fmt.Println(ejercicios)
-
 	}
 
 	for i := range ejercicios {
+
+		fmt.Printf("Ejercicio %d:\n", i+1)
 
 		for index := range operaciones {
 
@@ -173,6 +174,18 @@ func main() {
 					operador2 := rand.Intn(sumando)
 
 					fmt.Printf("%d + %d \n", operador1, operador2)
+					fmt.Scan(&respuesta)
+
+					if respuesta == mate.Sumar(operador1, operador2) {
+
+						fmt.Println("Muy bien, la respuesta es correcta")
+
+						puntosbuenos++
+
+					} else {
+						fmt.Println("Que mala suerte, esa no era la respuesta")
+						puntosmalos++
+					}
 
 				case 1:
 
@@ -182,6 +195,18 @@ func main() {
 					operador2 := rand.Intn(sustraendo)
 
 					fmt.Printf("%d - %d \n", operador1, operador2)
+					fmt.Scan(&respuesta)
+
+					if respuesta == mate.Restar(operador1, operador2) {
+
+						fmt.Println("Muy bien, la respuesta es correcta")
+
+						puntosbuenos++
+
+					} else {
+						fmt.Println("Que mala suerte, esa no era la respuesta")
+						puntosmalos++
+					}
 
 				case 2:
 
@@ -192,6 +217,19 @@ func main() {
 
 					fmt.Printf("%d * %d \n", operador1, operador2)
 
+					fmt.Scan(&respuesta)
+
+					if respuesta == mate.Multiplicar(operador1, operador2) {
+
+						fmt.Println("Muy bien, la respuesta es correcta")
+
+						puntosbuenos++
+
+					} else {
+						fmt.Println("Que mala suerte, esa no era la respuesta")
+						puntosmalos++
+					}
+
 				case 3:
 
 					dfactor1 := convertircifras(d1cifras)
@@ -200,7 +238,18 @@ func main() {
 					operador2 := rand.Intn(d2cifras)
 
 					fmt.Printf("%d ÷ %d \n", operador1, operador2)
+					fmt.Scan(&respuesta)
 
+					if respuesta == mate.Dividir(operador1, operador2) {
+
+						fmt.Println("Muy bien, la respuesta es correcta")
+
+						puntosbuenos++
+
+					} else {
+						fmt.Println("Que mala suerte, esa no era la respuesta")
+						puntosmalos++
+					}
 				}
 
 			}
@@ -209,7 +258,10 @@ func main() {
 
 	}
 
-	fmt.Println(mate.Suma(1, 2))
+	fmt.Println("Estos son los resultados:")
+
+	fmt.Printf("%d puntos a favor\n", puntosbuenos)
+	fmt.Printf("%d puntos en contra\n", puntosmalos)
 
 }
 
