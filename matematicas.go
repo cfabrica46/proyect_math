@@ -11,6 +11,14 @@ import (
 type operacion struct {
 	nombre string
 	acceso bool
+	id     int
+}
+
+func (o operacion) suma() (r int) {
+
+	r = i1 + i2
+
+	return
 }
 
 func main() {
@@ -21,22 +29,28 @@ func main() {
 		operacion{
 			nombre: "suma",
 			acceso: false,
+			id:     0,
 		},
 		operacion{
 			nombre: "resta",
 			acceso: false,
+			id:     1,
 		},
 		operacion{
 			nombre: "multiplicación",
 			acceso: false,
+			id:     2,
 		},
 		operacion{
 			nombre: "división",
 			acceso: false,
+			id:     3,
 		},
 	}
 
 	elecciones := []int{}
+
+	ejercicios := []int{}
 
 	//Introducción...
 	fmt.Println("Bienvenido")
@@ -121,7 +135,20 @@ func main() {
 
 		a := rand.Intn(len(elecciones))
 
-		fmt.Println(a)
+		ejercicios = append(ejercicios, a)
+
+		fmt.Println(ejercicios)
+
+	}
+
+	for _, v := range ejercicios {
+
+		for index := range operaciones {
+			if v == operaciones[index].id {
+
+			}
+
+		}
 
 	}
 
