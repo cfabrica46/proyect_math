@@ -63,10 +63,16 @@ func main() {
 		fmt.Scan(&eleccionoperaciones)
 
 		if eleccionoperaciones == 0 {
-			break
+
+			if len(elecciones) == 0 {
+				fmt.Println("Elige alguna opción")
+			} else {
+				break
+			}
+
 		}
 
-		if eleccionoperaciones <= len(operaciones) {
+		if eleccionoperaciones <= len(operaciones) && eleccionoperaciones > 0 {
 
 			operaciones[eleccionoperaciones-1].acceso = true
 
@@ -85,7 +91,13 @@ func main() {
 			}
 
 		} else {
-			fmt.Println("Hey, esa no era una opción")
+
+			if eleccionoperaciones == 0 {
+
+			} else {
+				fmt.Println("Hey, esa no era una opción")
+			}
+
 		}
 
 	}
@@ -97,7 +109,10 @@ func main() {
 		fmt.Printf("%d.%s\t", i+1, operaciones[v-1].nombre)
 
 	}
-	fmt.Println("")
+	for i := 0; i < 3; i++ {
+		fmt.Println("")
+
+	}
 	//Cuerpo del codigo...
 
 	rand.Seed(time.Now().UnixNano())
