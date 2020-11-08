@@ -19,9 +19,7 @@ type operacion struct {
 
 func main() {
 
-	var numerooperaciones, eleccionoperaciones, scifras, rcifras, mcifras, dcifras int
-
-	var buffer bytes.Buffer
+	var numerooperaciones, eleccionoperaciones, scifras, rcifras, m1cifras, m2cifras, d1cifras, d2cifras int
 
 	operaciones := []operacion{
 		operacion{
@@ -104,11 +102,16 @@ func main() {
 					fmt.Println("¿De Cuantas cifras sera la Resta?")
 					fmt.Scan(&rcifras)
 				case 3:
+
+					fmt.Println("¿De Cuantas cifras sera el primer factor?")
+					fmt.Scan(&m1cifras)
 					fmt.Println("¿Hasta que tabla seran las multiplicaciones?")
-					fmt.Scan(&mcifras)
+					fmt.Scan(&m2cifras)
 				case 4:
+					fmt.Println("¿De Cuantas cifras sera el primer factor?")
+					fmt.Scan(&d1cifras)
 					fmt.Println("¿Hasta que numero se dividirá?")
-					fmt.Scan(&dcifras)
+					fmt.Scan(&d2cifras)
 				}
 
 			}
@@ -164,30 +167,40 @@ func main() {
 				switch operaciones[index].id {
 				case 0:
 
-					for i := 0; i < scifras; i++ {
+					sumando := convertircifras(scifras)
 
-						buffer.WriteString("9")
-
-					}
-
-					sumando, err := strconv.Atoi(buffer.String())
-
-					if err != nil {
-						log.Fatal(err)
-					}
-
-					operador1 = rand.Intn(sumando)
+					operador1 := rand.Intn(sumando)
 					operador2 := rand.Intn(sumando)
 
+					fmt.Printf("%d + %d \n", operador1, operador2)
+
 				case 1:
-					operador1 := rand.Intn(rcifras)
-					operador2 := rand.Intn(rcifras)
+
+					sustraendo := convertircifras(rcifras)
+
+					operador1 := rand.Intn(sustraendo)
+					operador2 := rand.Intn(sustraendo)
+
+					fmt.Printf("%d - %d \n", operador1, operador2)
+
 				case 2:
-					operador1 := rand.Intn(scifras)
-					operador2 := rand.Intn(mcifras)
+
+					mfactor1 := convertircifras(m1cifras)
+
+					operador1 := rand.Intn(mfactor1)
+					operador2 := rand.Intn(m2cifras)
+
+					fmt.Printf("%d * %d \n", operador1, operador2)
+
 				case 3:
-					operador1 := rand.Intn(scifras)
-					operador2 := rand.Intn(dcifras)
+
+					dfactor1 := convertircifras(d1cifras)
+
+					operador1 := rand.Intn(dfactor1)
+					operador2 := rand.Intn(d2cifras)
+
+					fmt.Printf("%d ÷ %d \n", operador1, operador2)
+
 				}
 
 			}
@@ -219,4 +232,22 @@ func revisar(v []int, n int) (aviso bool) {
 
 	return
 
+}
+
+func convertircifras(cifras int) (r int) {
+
+	var buffer bytes.Buffer
+
+	for i := 0; i < cifras; i++ {
+
+		buffer.WriteString("9")
+
+	}
+
+	r, err := strconv.Atoi(buffer.String())
+
+	if err != nil {
+		log.Fatal(err)
+	}
+	return
 }
