@@ -1,8 +1,11 @@
 package main
 
 import (
+	"bytes"
 	"fmt"
+	"log"
 	"math/rand"
+	"strconv"
 	"time"
 
 	"github.com/Cesar/prueba_1/Matematicas/mate"
@@ -14,16 +17,11 @@ type operacion struct {
 	id     int
 }
 
-func (o operacion) suma() (r int) {
-
-	r = i1 + i2
-
-	return
-}
-
 func main() {
 
-	var numerooperaciones, eleccionoperaciones int
+	var numerooperaciones, eleccionoperaciones, scifras, rcifras, mcifras, dcifras int
+
+	var buffer bytes.Buffer
 
 	operaciones := []operacion{
 		operacion{
@@ -98,6 +96,21 @@ func main() {
 
 				elecciones = append(elecciones, eleccionoperaciones)
 
+				switch eleccionoperaciones {
+				case 1:
+					fmt.Println("¿De Cuantas cifras sera la suma?")
+					fmt.Scan(&scifras)
+				case 2:
+					fmt.Println("¿De Cuantas cifras sera la Resta?")
+					fmt.Scan(&rcifras)
+				case 3:
+					fmt.Println("¿Hasta que tabla seran las multiplicaciones?")
+					fmt.Scan(&mcifras)
+				case 4:
+					fmt.Println("¿Hasta que numero se dividirá?")
+					fmt.Scan(&dcifras)
+				}
+
 			}
 
 			if len(elecciones) == len(operaciones) {
@@ -123,10 +136,11 @@ func main() {
 		fmt.Printf("%d.%s\t", i+1, operaciones[v-1].nombre)
 
 	}
-	for i := 0; i < 3; i++ {
+	for i := 0; i < 2; i++ {
 		fmt.Println("")
 
 	}
+
 	//Cuerpo del codigo...
 
 	rand.Seed(time.Now().UnixNano())
@@ -141,10 +155,40 @@ func main() {
 
 	}
 
-	for _, v := range ejercicios {
+	for i := range ejercicios {
 
 		for index := range operaciones {
-			if v == operaciones[index].id {
+
+			if ejercicios[i] == operaciones[index].id {
+
+				switch operaciones[index].id {
+				case 0:
+
+					for i := 0; i < scifras; i++ {
+
+						buffer.WriteString("9")
+
+					}
+
+					sumando, err := strconv.Atoi(buffer.String())
+
+					if err != nil {
+						log.Fatal(err)
+					}
+
+					operador1 = rand.Intn(sumando)
+					operador2 := rand.Intn(sumando)
+
+				case 1:
+					operador1 := rand.Intn(rcifras)
+					operador2 := rand.Intn(rcifras)
+				case 2:
+					operador1 := rand.Intn(scifras)
+					operador2 := rand.Intn(mcifras)
+				case 3:
+					operador1 := rand.Intn(scifras)
+					operador2 := rand.Intn(dcifras)
+				}
 
 			}
 
