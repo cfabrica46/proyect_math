@@ -8,7 +8,7 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/Cesar/prueba_1/Matematicas/mate"
+	"github.com/cfabrica46/prueba_1/Matematicas/mate"
 )
 
 type operacion struct {
@@ -263,6 +263,7 @@ func main() {
 	fmt.Printf("%d puntos a favor\n", puntosbuenos)
 	fmt.Printf("%d puntos en contra\n", puntosmalos)
 
+	fmt.Println("Buena Practica :3")
 }
 
 func revisar(v []int, n int) (aviso bool) {
