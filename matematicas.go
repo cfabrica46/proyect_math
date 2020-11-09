@@ -8,7 +8,7 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/cfabrica46/prueba_1/Matematicas/mate"
+	"github.com/cfabrica46/proyecto_matematicas/mate"
 )
 
 type operacion struct {
